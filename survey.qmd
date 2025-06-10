@@ -1,0 +1,103 @@
+---
+format: html
+echo: false
+warning: false
+---
+
+```{r}
+library(surveydown)
+```
+
+::: {#page1 .sd-page}
+
+<center>
+### Leaf usage tracker
+</center>
+
+```{r}
+years <- rev(seq(2008, 2025, 1))
+names(years) <- years
+
+sd_question(
+  type   = "select",
+  id     = "year",
+  label  = "Model year:",
+  option = years,
+  width = "60%"
+)
+
+sd_output('make', type = 'question', width = "60%")
+
+sd_output('model', type = 'question', width = "60%")
+
+sd_output('trim', type = 'question', width = "60%")
+```
+
+<center>
+**If you cannot find your vehicle above, please enter the make, model, and trim here:**
+</center>
+
+```{r}
+sd_question(
+  type   = "text",
+  id     = "model_custom",
+  label  = "",
+  width = "60%"
+)
+
+sd_next()
+```
+
+:::
+
+::: {#mileage .sd-page}
+
+<center>
+## Please tell us about your vehicle's mileage and range
+</center>
+
+```{r}
+sd_question(
+  type   = "numeric",
+  id     = "odometer",
+  label  = "What is your current odometer reading?", 
+  width = "60%"
+)
+
+sd_question(
+  type   = "numeric",
+  id     = "range_oem",
+  label  = "If you know the manufacturer stated range of your vehicle, please enter it below", 
+  width = "60%"
+)
+
+sd_question(
+  type   = "numeric",
+  id     = "range_charged",
+  label  = "If you fully charge your vehicle to 100% charge, what range does your vehicle range indicator show?", 
+  width = "60%"
+)
+
+sd_next()
+```
+
+:::
+
+::: {#end .sd-page}
+
+# Thank you!
+
+Thanks, that's all - you can close this page now :)
+
+```{r}
+sd_question(
+  type  = "textarea",
+  id    = "open",
+  label = "If you have anything else you'd like to share please include it below", 
+  width = "60%"
+)
+
+sd_close()
+```
+
+:::
