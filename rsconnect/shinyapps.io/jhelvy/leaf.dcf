@@ -1,0 +1,10 @@
+name: leaf
+title:
+username: jhelvy
+account: jhelvy
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14919445
+bundleId: 10437651
+url: https://jhelvy.shinyapps.io/leaf/
+version: 1
