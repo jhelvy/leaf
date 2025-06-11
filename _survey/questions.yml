@@ -1,0 +1,24 @@
+# ! JUST READ - don't change the content of this file
+# Question structure extracted from survey.html
+start_percent:
+  type: text
+  label: Battery %
+start_range:
+  type: text
+  label: Range
+start_mileage:
+  type: text
+  label: Mileage
+end_percent:
+  type: text
+  label: Battery %
+end_range:
+  type: text
+  label: Range
+end_mileage:
+  type: text
+  label: Mileage
+note:
+  type: text
+  label: Write any trip notes here
+
