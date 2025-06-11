@@ -1,6 +1,5 @@
 library(surveydown)
 
-# sd_db_config()
 db <- sd_db_connect()
 
 server <- function(input, output, session) {
