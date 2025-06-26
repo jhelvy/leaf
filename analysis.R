@@ -2,8 +2,10 @@ library(surveydown)
 library(tidyverse)
 library(lubridate)
 
-db <- sd_db_connect()
-data <- sd_get_data(db) %>% 
+db <- sd_db_connect(gssencmode = 'disable')
+data_raw <- sd_get_data(db)
+
+data <- data_raw %>% 
     select(
         date = time_start, 
         starts_with('start_'), 
@@ -21,13 +23,12 @@ data <- sd_get_data(db) %>%
         start_range = as.numeric(start_range), 
         end_mileage = as.numeric(end_mileage), 
         end_percent = as.numeric(end_percent), 
-        end_range = as.numeric(end_range)
-    )
-    
-data %>% 
-    mutate(
+        end_range = as.numeric(end_range),
         trip_miles = end_mileage - start_mileage, 
         trip_percent = start_percent - end_percent, 
         trip_range = start_range - end_range, 
         range_factor = trip_miles / trip_range
-    )
+    ) %>% 
+    arrange(desc(date))
+
+data
